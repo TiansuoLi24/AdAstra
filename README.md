@@ -1,6 +1,8 @@
-# Ad Astra — 3D 目标规划星图
+# Ad Astra - 目标规划星图(DEMO)
 
-将目标拆解为可交互的 3D 星系。输入一个目标，AI 自动生成科学的任务树，以星球和轨道的形态可视化呈现。点击叶子节点点亮星球，追踪进度。
+***该分支为项目demo，正式版已上传至main分支***
+
+将任务拆解为可交互的 3D 星系。输入一个目标，AI 自动生成科学的任务树，以星球和轨道的形态可视化呈现。点击叶子节点点亮星球，追踪进度。
 
 ## 技术栈
 
@@ -44,7 +46,8 @@ src/
 │   ├── PlanetNode.jsx    # 递归星球组件（材质、大气层、轨道）
 │   ├── Sidebar.jsx       # 左侧星图列表抽屉
 │   ├── StarMapPanel.jsx  # 顶部进度面板
-│   └── GoalInput.jsx     # 底部 AI 输入框
+│   ├── GoalInput.jsx     # 底部 AI 输入框
+│   └── PlanetDialog.jsx  # 星球详情弹窗（已废弃，改为 3D 标注）
 ├── services/
 │   └── llmService.js     # AI API 调用 + System Prompt
 ├── store/
@@ -65,7 +68,6 @@ VITE_API_BASE=your-api-base   # API 地址
 ## 构建与部署
 
 ```bash
-npm run build      # 输出到 dist/
-npx vite preview   # 预览构建结果
+npm run build      
+npx vite preview   
 ```
-
