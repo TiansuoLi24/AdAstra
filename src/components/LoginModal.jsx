@@ -205,7 +205,11 @@ function LoginForm({ onSubmit, isLoading, error, isRegister, onToggleMode }) {
 
 // 主登录弹窗组件
 function LoginModal() {
+<<<<<<< HEAD
   const { isLoginModalOpen, closeLoginModal, login, register } = useAuthStore()
+=======
+  const { isLoginModalOpen, closeLoginModal, login } = useAuthStore()
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const [isRegister, setIsRegister] = useState(false)
@@ -229,15 +233,25 @@ function LoginModal() {
   const handleSubmit = useCallback(async (credentials) => {
     setIsLoading(true)
     setError('')
+<<<<<<< HEAD
 
     const action = isRegister ? register : login
     const result = await action(credentials)
 
+=======
+    
+    const result = await login(credentials)
+    
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
     if (!result.success) {
       setError(result.error)
     }
     setIsLoading(false)
+<<<<<<< HEAD
   }, [login, register, isRegister])
+=======
+  }, [login])
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 
   if (!isLoginModalOpen) return null
 

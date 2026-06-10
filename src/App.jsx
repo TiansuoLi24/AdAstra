@@ -10,7 +10,10 @@ import SpaceEffects from './components/SpaceEffects'
 import LoginModal from './components/LoginModal'
 import useTaskStore, { selectCurrentTasks } from './store/useTaskStore'
 import useSettingsStore from './store/useSettingsStore'
+<<<<<<< HEAD
 import useAuthStore from './store/useAuthStore'
+=======
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 import * as THREE from 'three'
 
 const defaultCamPos = new THREE.Vector3(0, 80, 150)
@@ -175,12 +178,15 @@ function Scene() {
 }
 
 function App() {
+<<<<<<< HEAD
   const validateToken = useAuthStore((s) => s.validateToken)
 
   useEffect(() => {
     validateToken()
   }, [validateToken])
 
+=======
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
   return (
     <div className="h-dvh w-screen bg-black relative overflow-hidden">
       {/* 背景渐变 */}

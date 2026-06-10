@@ -1,6 +1,9 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+<<<<<<< HEAD
 import { saveSettingsAPI } from '../services/apiService'
+=======
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 
 // 行星纹理类型
 export const PLANET_TYPES = {
@@ -194,6 +197,7 @@ const useSettingsStore = create(
         showOrbitLines: true,
         orbitLineOpacity: 0.3,
       }),
+<<<<<<< HEAD
 
       // Server sync
       loadFromServer: (settings) => {
@@ -230,6 +234,8 @@ const useSettingsStore = create(
           saveSettingsAPI(state.token, settingsData).catch(() => {})
         } catch {}
       },
+=======
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
     }),
     {
       name: 'ad-astra-settings',
@@ -237,6 +243,7 @@ const useSettingsStore = create(
   ),
 )
 
+<<<<<<< HEAD
 // Auto-sync to server when settings change (debounced)
 let syncTimer = null
 useSettingsStore.subscribe((state, prevState) => {
@@ -255,4 +262,6 @@ useSettingsStore.subscribe((state, prevState) => {
   }
 })
 
+=======
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 export default useSettingsStore

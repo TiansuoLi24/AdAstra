@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
+<<<<<<< HEAD
     port: 3000,
     proxy: {
       '/api': {
@@ -13,4 +14,8 @@ export default defineConfig({
       },
     },
   },
+=======
+    port: 3000
+  }
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 })

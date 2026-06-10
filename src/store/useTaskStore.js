@@ -1,7 +1,10 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { produce } from 'immer'
+<<<<<<< HEAD
 import { syncMapsAPI } from '../services/apiService'
+=======
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 
 /* ---------- tree helpers ---------- */
 
@@ -348,6 +351,7 @@ const useTaskStore = create(
         selectedTaskId: null,
         selectTask: (id) => set({ selectedTaskId: id }),
         deselectTask: () => set({ selectedTaskId: null }),
+<<<<<<< HEAD
 
         // Server sync
         loadFromServer: (maps) => {
@@ -370,6 +374,8 @@ const useTaskStore = create(
             syncMapsAPI(state.token, maps).catch(() => {})
           } catch {}
         },
+=======
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
       }
     },
     {
@@ -389,6 +395,7 @@ export function selectCurrentTasks(state) {
   return selectCurrentMap(state)?.tasks ?? null
 }
 
+<<<<<<< HEAD
 // Auto-sync to server when maps change (debounced)
 let syncTimer = null
 useTaskStore.subscribe((state, prevState) => {
@@ -400,4 +407,6 @@ useTaskStore.subscribe((state, prevState) => {
   }
 })
 
+=======
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 export default useTaskStore

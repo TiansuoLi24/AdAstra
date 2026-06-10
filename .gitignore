@@ -34,10 +34,13 @@ pnpm-debug.log*
 Thumbs.db
 *.lnk
 
+<<<<<<< HEAD
 # Database
 server/data/
 *.db
 
+=======
+>>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 # Dependencies
 node_modules/
 
