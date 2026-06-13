@@ -4,15 +4,15 @@ import useAuthStore from '../store/useAuthStore'
 // 星星粒子背景组件
 function StarField({ count = 50 }) {
   const canvasRef = useRef(null)
-  
+
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-    
+
     const ctx = canvas.getContext('2d')
     const width = canvas.width = 400
     const height = canvas.height = 300
-    
+
     const stars = []
     for (let i = 0; i < count; i++) {
       stars.push({
@@ -24,20 +24,20 @@ function StarField({ count = 50 }) {
         angle: Math.random() * Math.PI * 2,
       })
     }
-    
+
     let animationId
     const animate = () => {
       ctx.clearRect(0, 0, width, height)
-      
+
       stars.forEach(star => {
         star.angle += star.twinkleSpeed
         const opacity = star.opacity * (0.5 + Math.sin(star.angle) * 0.5)
-        
+
         ctx.beginPath()
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`
         ctx.fill()
-        
+
         // 添加光晕
         const gradient = ctx.createRadialGradient(
           star.x, star.y, 0,
@@ -50,18 +50,18 @@ function StarField({ count = 50 }) {
         ctx.fillStyle = gradient
         ctx.fill()
       })
-      
+
       animationId = requestAnimationFrame(animate)
     }
-    
+
     animate()
-    
+
     return () => cancelAnimationFrame(animationId)
   }, [count])
-  
+
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       className="absolute inset-0 w-full h-full opacity-60"
       style={{ pointerEvents: 'none' }}
     />
@@ -131,7 +131,7 @@ function LoginForm({ onSubmit, isLoading, error, isRegister, onToggleMode }) {
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40
                        hover:text-white/60 transition-colors"
           >
             {showPassword ? (
@@ -205,11 +205,7 @@ function LoginForm({ onSubmit, isLoading, error, isRegister, onToggleMode }) {
 
 // 主登录弹窗组件
 function LoginModal() {
-<<<<<<< HEAD
   const { isLoginModalOpen, closeLoginModal, login, register } = useAuthStore()
-=======
-  const { isLoginModalOpen, closeLoginModal, login } = useAuthStore()
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const [isRegister, setIsRegister] = useState(false)
@@ -233,36 +229,26 @@ function LoginModal() {
   const handleSubmit = useCallback(async (credentials) => {
     setIsLoading(true)
     setError('')
-<<<<<<< HEAD
 
     const action = isRegister ? register : login
     const result = await action(credentials)
 
-=======
-    
-    const result = await login(credentials)
-    
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
     if (!result.success) {
       setError(result.error)
     }
     setIsLoading(false)
-<<<<<<< HEAD
   }, [login, register, isRegister])
-=======
-  }, [login])
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 
   if (!isLoginModalOpen) return null
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* 背景遮罩 */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/70 backdrop-blur-sm"
         onClick={closeLoginModal}
       />
-      
+
       {/* 星星背景 */}
       <StarField count={60} />
 
@@ -280,7 +266,7 @@ function LoginModal() {
       >
         {/* 顶部渐变装饰 */}
         <div className="h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-amber-500" />
-        
+
         {/* 关闭按钮 */}
         <button
           onClick={closeLoginModal}
@@ -315,9 +301,9 @@ function LoginModal() {
           </div>
 
           {/* 表单 */}
-          <LoginForm 
-            onSubmit={handleSubmit} 
-            isLoading={isLoading} 
+          <LoginForm
+            onSubmit={handleSubmit}
+            isLoading={isLoading}
             error={error}
             isRegister={isRegister}
             onToggleMode={() => setIsRegister(!isRegister)}

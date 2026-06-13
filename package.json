@@ -4,13 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-<<<<<<< HEAD
     "dev": "concurrently -n client,server -c cyan,magenta \"vite\" \"node --watch server/src/index.js\"",
     "dev:client": "vite",
     "dev:server": "node --watch server/src/index.js",
-=======
-    "dev": "vite",
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -35,10 +31,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
-<<<<<<< HEAD
     "concurrently": "^9.2.1",
-=======
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
     "eslint": "^10.2.1",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",

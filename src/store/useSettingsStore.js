@@ -1,9 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-<<<<<<< HEAD
 import { saveSettingsAPI } from '../services/apiService'
-=======
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 
 // 行星纹理类型
 export const PLANET_TYPES = {
@@ -46,20 +43,20 @@ export const PLANET_TYPES = {
 
 // 行星类型比例配置 (用于随机选择)
 export const PLANET_TYPE_WEIGHTS = {
-  terrestrial: 1,   // 1%
-  gas: 50,          // 50%
-  rocky: 20,        // 20%
-  ice: 9,           // 9%
-  water: 20,        // 20%
+  terrestrial: 1,
+  gas: 50,
+  rocky: 20,
+  ice: 9,
+  water: 20,
   total: 100
 }
 
 // 不包含气态行星的比例（用于 level >= 1）
 export const PLANET_TYPE_WEIGHTS_NO_GAS = {
-  terrestrial: 1,   // ~2%
-  rocky: 20,        // ~40%
-  ice: 9,           // ~18%
-  water: 20,        // ~40%
+  terrestrial: 1,
+  rocky: 20,
+  ice: 9,
+  water: 20,
   total: 50
 }
 
@@ -141,28 +138,28 @@ const useSettingsStore = create(
   persist(
     (set, get) => ({
       // 轨道速度设置
-      planetOrbitSpeed: 1.0,      // 行星公转速度倍率 (0.1 - 5.0)
-      moonOrbitSpeed: 1.0,        // 卫星公转速度倍率 (0.1 - 5.0)
-      starRotationSpeed: 1.0,     // 恒星自转速度倍率 (0.1 - 5.0)
+      planetOrbitSpeed: 1.0,
+      moonOrbitSpeed: 1.0,
+      starRotationSpeed: 1.0,
 
       // 恒星设置
-      starType: 'sun',            // 当前恒星类型
+      starType: 'sun',
 
       // 特效开关
-      enableMeteors: true,        // 启用流星
-      enableAsteroidBelt: false,  // 启用小行星带
-      enableSpaceDust: true,       // 启用太空尘埃
-      enableNebula: true,         // 启用星云背景
-      enableStarBackground: true,  // 启用星星背景
+      enableMeteors: true,
+      enableAsteroidBelt: false,
+      enableSpaceDust: true,
+      enableNebula: true,
+      enableStarBackground: true,
 
       // 视觉效果
-      bloomIntensity: 1.0,        // 泛光强度 (0.5 - 3.0)
-      starCount: 20000,           // 星星数量
-      meteorCount: 6,             // 流星数量
+      bloomIntensity: 1.0,
+      starCount: 20000,
+      meteorCount: 6,
 
       // 轨道线设置
-      showOrbitLines: true,       // 显示轨道线
-      orbitLineOpacity: 0.3,      // 轨道线透明度 (0.1 - 1.0)
+      showOrbitLines: true,
+      orbitLineOpacity: 0.3,
 
       // 动作
       setPlanetOrbitSpeed: (speed) => set({ planetOrbitSpeed: speed }),
@@ -197,7 +194,6 @@ const useSettingsStore = create(
         showOrbitLines: true,
         orbitLineOpacity: 0.3,
       }),
-<<<<<<< HEAD
 
       // Server sync
       loadFromServer: (settings) => {
@@ -234,8 +230,6 @@ const useSettingsStore = create(
           saveSettingsAPI(state.token, settingsData).catch(() => {})
         } catch {}
       },
-=======
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
     }),
     {
       name: 'ad-astra-settings',
@@ -243,7 +237,6 @@ const useSettingsStore = create(
   ),
 )
 
-<<<<<<< HEAD
 // Auto-sync to server when settings change (debounced)
 let syncTimer = null
 useSettingsStore.subscribe((state, prevState) => {
@@ -262,6 +255,4 @@ useSettingsStore.subscribe((state, prevState) => {
   }
 })
 
-=======
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 export default useSettingsStore

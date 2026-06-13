@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/d/Software/Git/cmd/git.exe commit *)",
+      "Bash(/d/Software/Git/cmd/git.exe push *)"
+    ]
+  }
+}

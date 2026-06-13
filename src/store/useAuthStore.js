@@ -1,6 +1,5 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-<<<<<<< HEAD
 import { loginAPI, registerAPI, getMeAPI } from '../services/authService'
 import { listMapsAPI, syncMapsAPI, getSettingsAPI, saveSettingsAPI } from '../services/apiService'
 import useTaskStore from './useTaskStore'
@@ -64,7 +63,6 @@ async function loadUserData(token) {
     } else {
       // No server settings — upload local settings
       const localSettings = { ...useSettingsStore.getState() }
-      // Strip functions, keep only data
       const dataKeys = [
         'planetOrbitSpeed', 'moonOrbitSpeed', 'starRotationSpeed',
         'starType', 'enableMeteors', 'enableAsteroidBelt', 'enableSpaceDust',
@@ -83,13 +81,10 @@ async function loadUserData(token) {
     // Server unreachable, keep local
   }
 }
-=======
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 
 const useAuthStore = create(
   persist(
     (set, get) => ({
-<<<<<<< HEAD
       isAuthenticated: false,
       user: null,
       token: null,
@@ -151,71 +146,14 @@ const useAuthStore = create(
 
       updateUser: (updates) => set((state) => ({
         user: state.user ? { ...state.user, ...updates } : null,
-=======
-      // 用户登录状态
-      isAuthenticated: false,
-      user: null,
-      
-      // 登录弹窗状态
-      isLoginModalOpen: false,
-
-      /* ---- Actions ---- */
-
-      // 打开登录弹窗
-      openLoginModal: () => set({ isLoginModalOpen: true }),
-      
-      // 关闭登录弹窗
-      closeLoginModal: () => set({ isLoginModalOpen: false }),
-
-      // 模拟登录（实际项目中替换为真实 API 调用）
-      login: async (credentials) => {
-        // 模拟 API 请求延迟
-        await new Promise(resolve => setTimeout(resolve, 1000))
-        
-        // 简单的模拟验证（实际项目中应调用后端 API）
-        if (credentials.email && credentials.password) {
-          const mockUser = {
-            id: crypto.randomUUID(),
-            name: credentials.name || credentials.email.split('@')[0],
-            email: credentials.email,
-            avatar: null,
-            createdAt: Date.now(),
-          }
-          set({ 
-            isAuthenticated: true, 
-            user: mockUser,
-            isLoginModalOpen: false 
-          })
-          return { success: true }
-        }
-        
-        return { success: false, error: '邮箱或密码错误' }
-      },
-
-      // 登出
-      logout: () => set({ 
-        isAuthenticated: false, 
-        user: null 
-      }),
-
-      // 更新用户信息
-      updateUser: (updates) => set((state) => ({
-        user: state.user ? { ...state.user, ...updates } : null
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
       })),
     }),
     {
       name: 'ad-astra-auth',
-<<<<<<< HEAD
       partialize: (state) => ({
         isAuthenticated: state.isAuthenticated,
         user: state.user,
         token: state.token,
-=======
-      partialize: (state) => ({ 
-        isAuthenticated: state.isAuthenticated,
-        user: state.user 
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
       }),
     }
   )

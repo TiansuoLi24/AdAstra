@@ -1,10 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { produce } from 'immer'
-<<<<<<< HEAD
 import { syncMapsAPI } from '../services/apiService'
-=======
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 
 /* ---------- tree helpers ---------- */
 
@@ -99,7 +96,6 @@ function deleteInTree(task, id) {
   }
 }
 
-// 移动/重排序任务
 function moveTaskInTree(task, sourceId, targetId, newIndex) {
   if (task.id === sourceId || task.id === targetId) return false
 
@@ -107,14 +103,11 @@ function moveTaskInTree(task, sourceId, targetId, newIndex) {
     const child = task.children[i]
 
     if (child.id === targetId) {
-      // 找到目标节点，从原位置移除并插入到目标位置
       const sourceChild = findTaskById(task, sourceId)
       if (!sourceChild) return false
 
-      // 从当前父节点的 children 中移除
       task.children = task.children.filter(c => c.id !== sourceId)
 
-      // 插入到目标位置
       const insertIdx = newIndex >= 0 ? Math.min(newIndex, task.children.length) : task.children.length
       task.children.splice(insertIdx, 0, { ...sourceChild })
       return true
@@ -127,7 +120,6 @@ function moveTaskInTree(task, sourceId, targetId, newIndex) {
   return false
 }
 
-// 简单的排序：在同一父节点下移动子任务
 function reorderChildInTree(task, sourceId, overId) {
   const findParent = (node, childId) => {
     for (const child of node.children) {
@@ -303,7 +295,6 @@ const useTaskStore = create(
               if (idx === -1) return
               const map = state.maps[idx]
 
-              // Special case: adding parent above root
               if (map.tasks.id === childId) {
                 map.tasks = {
                   id: crypto.randomUUID(),
@@ -326,14 +317,12 @@ const useTaskStore = create(
               const idx = currentMapIdx(state)
               if (idx === -1) return
               const map = state.maps[idx]
-              // Cannot delete the root node
               if (map.tasks.id === id) return
               deleteInTree(map.tasks, id)
               map.tasks = recalculateStatus(map.tasks)
             }),
           ),
 
-        // 拖拽重排序
         reorderTask: (sourceId, overId) =>
           set(
             produce((state) => {
@@ -351,7 +340,6 @@ const useTaskStore = create(
         selectedTaskId: null,
         selectTask: (id) => set({ selectedTaskId: id }),
         deselectTask: () => set({ selectedTaskId: null }),
-<<<<<<< HEAD
 
         // Server sync
         loadFromServer: (maps) => {
@@ -374,8 +362,6 @@ const useTaskStore = create(
             syncMapsAPI(state.token, maps).catch(() => {})
           } catch {}
         },
-=======
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
       }
     },
     {
@@ -395,7 +381,6 @@ export function selectCurrentTasks(state) {
   return selectCurrentMap(state)?.tasks ?? null
 }
 
-<<<<<<< HEAD
 // Auto-sync to server when maps change (debounced)
 let syncTimer = null
 useTaskStore.subscribe((state, prevState) => {
@@ -407,6 +392,4 @@ useTaskStore.subscribe((state, prevState) => {
   }
 })
 
-=======
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 export default useTaskStore

@@ -10,10 +10,7 @@ import SpaceEffects from './components/SpaceEffects'
 import LoginModal from './components/LoginModal'
 import useTaskStore, { selectCurrentTasks } from './store/useTaskStore'
 import useSettingsStore from './store/useSettingsStore'
-<<<<<<< HEAD
 import useAuthStore from './store/useAuthStore'
-=======
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
 import * as THREE from 'three'
 
 const defaultCamPos = new THREE.Vector3(0, 80, 150)
@@ -178,19 +175,16 @@ function Scene() {
 }
 
 function App() {
-<<<<<<< HEAD
   const validateToken = useAuthStore((s) => s.validateToken)
 
   useEffect(() => {
     validateToken()
   }, [validateToken])
 
-=======
->>>>>>> 1ebef703f3f6d2e4fb1ff6b1ee180946bb088367
   return (
     <div className="h-dvh w-screen bg-black relative overflow-hidden">
       {/* 背景渐变 */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: 'radial-gradient(ellipse at center, #0a0a1f 0%, #000000 100%)'
@@ -203,9 +197,9 @@ function App() {
       <LoginModal />
 
       <Suspense fallback={null}>
-        <Canvas 
+        <Canvas
           camera={{ position: [0, 80, 150], fov: 50, far: 3000 }}
-          gl={{ 
+          gl={{
             antialias: true,
             alpha: false,
             powerPreference: 'high-performance'
